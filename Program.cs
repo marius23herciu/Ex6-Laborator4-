@@ -11,34 +11,33 @@ namespace Ex6_Laborator4_
             //Fibonacci, n fiind citit de la tastatura
 
             Console.WriteLine("Introduceti un numar:");
-            int numar = int.Parse(Console.ReadLine());
+            long numar = int.Parse(Console.ReadLine());
             if (numar < 1)
             {
                 Console.WriteLine("Introduceti un numar mai mare de 0!");
                 return;
             }
-            int start = 1; long calculFibonacci = 1; long numarPrecedent1 = 1;
-            AfisareNElementFibonacci(start, numar, calculFibonacci, numarPrecedent1);
+            long start = 1; long calculFibonacci = 1; long numarPrecedent1 = 1;
+            long rezultat = AfisareNElementFibonacci(start, numar, numarPrecedent1, calculFibonacci);
+            Console.WriteLine("Numarul " + numar + " din sirul lui Fibonacci este " + rezultat);
         }
 
-        static long AfisareNElementFibonacci(int start, int numar, long calculFibonacci, long numarprecedent)
+        static long AfisareNElementFibonacci(long start, long numar, long numarPrecedent, long calculFibonacci)
         {
-            while (start > numar)
+            if (start > numar)
             {
-                Console.WriteLine("Numarul " + numar + " din sirul lui Fibonacci este " + calculFibonacci);
                 return calculFibonacci;
             }
-            long precedent2 = numarprecedent;
+            long precedent2 = numarPrecedent;
             if (start > 1)
             {
-                numarprecedent = calculFibonacci;
+                numarPrecedent = calculFibonacci;
             }
             if (start > 2)
             {
-                calculFibonacci = numarprecedent + precedent2;
+                calculFibonacci = numarPrecedent + precedent2;
             }
-            AfisareNElementFibonacci(start + 1, numar, calculFibonacci, numarprecedent);
-            return calculFibonacci;
+            return calculFibonacci = AfisareNElementFibonacci(start + 1, numar, numarPrecedent, calculFibonacci);
         }
     }
 }
